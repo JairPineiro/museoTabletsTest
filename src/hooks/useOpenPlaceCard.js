@@ -1,9 +1,12 @@
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useOpenPlaceCard = () => {
+  const navigate = useNavigate();
+
   const openPlaceCard = useCallback((place) => {
-        window.location.href = `place/${place.id}`;
-  }, []);
+    navigate(`/place/${place.id}`);
+  }, [navigate]);
 
   return openPlaceCard;
 };
