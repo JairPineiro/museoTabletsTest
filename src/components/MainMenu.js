@@ -1,26 +1,19 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {places} from '../data/places'
 import useOpenPlaceCard from '../hooks/useOpenPlaceCard';
-import useAutoRedirect from '../hooks/useAutoRedirect';
 
-export const MainMenu = ({allPlaces, setAllPlaces}) => {
-
-    
-    useAutoRedirect('/', 10000)
-
-    const onAddPlace = (place) => {
-         if (!allPlaces.some(selected => selected.nombre === place.nombre)) {
-            setAllPlaces([...allPlaces, place]);
-            console.log(`Se agregó ${place.nombre} a tu arreglo`)
-            console.log(allPlaces)
-        }else{
-            alert(`${place.nombre} ya fue agregado a tus favoritos`)
-        }
-    };
+export const MainMenu = ({ favorites, toggleFavorite, favoritesCount }) => {
     const openPlaceCard = useOpenPlaceCard();
+    const navigatetoFavs = useNavigate();
+
+    const navigateToFavsPage = () => {
+      navigatetoFavs('/favorites')
+    };
+
   return (
     <div className='main-menu-container'>
         <h1>Main Menu </h1>
+        <button className='go-favs-button' onClick={navigateToFavsPage}>Favoritos ({favoritesCount})</button>
         <div className='cards-container'>
             {places.map((place) => (
                 <div key={place.id} className='card'>
@@ -28,15 +21,12 @@ export const MainMenu = ({allPlaces, setAllPlaces}) => {
                         <h2>{place.nombre}</h2>
                         <p>{place.descripcion}</p>
                     </div>
-                    <button onClick={() => onAddPlace(place)}>Añadir a favoritos</button>
+                    <button onClick={() => toggleFavorite(place)}>
+                            {favorites.some(favorite => favorite.id === place.id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
+                        </button>
                 </div>
             ))}
-        </div>
-        
-        
-        <button className='go-favs-button'>
-            <Link to='/favorites' className='link-button'>Ir a Favoritos</Link>
-        </button>
+        </div>        
     </div>
   );
 };
