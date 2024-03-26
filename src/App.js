@@ -28,7 +28,7 @@ function App() {
   };
 
   const favoritesCount = favorites.length;
-  
+
   return (
     <div>
       <MainRoutes
