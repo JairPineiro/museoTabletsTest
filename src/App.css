@@ -1,26 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .main-menu-container{
   display: grid;
@@ -55,3 +32,76 @@ button:hover {
 .card:hover {
   cursor: pointer;
 }
+
+ /* .fade-pages-enter {
+  opacity: 0;
+}
+
+.fade-pages-enter-active {
+  opacity: 1;
+  transition: opacity 800ms;
+}  */
+
+.fade-pages-exit {
+  opacity: 1;
+}
+
+.fade-pages-exit-active {
+  opacity: 0;
+  transition: opacity 800ms;
+}  
+
+ .move-cards-container-exit{
+transform: translateX(0);
+}
+
+.move-cards-container-exit-active {
+  transform: translateX(100%);
+  transition: transform 400ms ease-in;
+} 
+
+.rotate-card{
+  transform: rotate(0deg) scale(100%);
+}
+
+.rotate-card-exit-active{
+  transform: rotate(-25deg) scale(90%);
+  transition: transform 800ms ease-out;
+}
+
+.cards-down-enter{
+  transform: translateY(-100%);
+}
+
+.cards-down-enter-active{
+  transform: translateY(0);
+  transition: transform 300ms ease-out;
+}
+
+.cards-down {
+  transform: translateY(0);
+}
+
+.cards-down-exit-active {
+  transform: translateY(100%);
+  transition: transform 300ms ease-in;
+} 
+
+.scale-enter {
+  transform: scale(0); /* Configura el estado inicial del componente al entrar */
+}
+
+.scale-enter-active {
+  transform: scale(1); /* Configura el estado final del componente al entrar */
+  transition: transform 500ms ease-in; /* Define la transición */
+}
+
+.scale-exit {
+  transform: scale(1); /* Configura el estado inicial del componente al salir */
+}
+
+.scale-exit-active {
+  transform: scale(0); /* Configura el estado final del componente al salir */
+  transition: transform 500ms ease-out; /* Define la transición */
+}
+
